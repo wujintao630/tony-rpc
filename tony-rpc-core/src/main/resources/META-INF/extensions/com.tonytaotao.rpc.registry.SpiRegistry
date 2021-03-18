@@ -1,0 +1,1 @@
+zookeeper=com.tonytaotao.rpc.registry.zookeeper.ZookeeperRegistry

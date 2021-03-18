@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tonyrpc="http://www.tonytaotao.com/schema/tonytaotao"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.tonytaotao.com/schema/tonytaotao http://www.tonytaotao.com/schema/tonytaotao/tonyrpc.xsd
+">
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.tonytaotao.rpc"/>
+
+    <tonyrpc:application name="rpc-demo" />
+    <tonyrpc:protocol name="tonyrpc" port="20000" />
+    <tonyrpc:registry protocol="zookeeper" address="192.168.56.101:2181" connect-timeout="5000" />
+
+    <tonyrpc:service interface="com.tonytaotao.rpc.demo.api.DemoService" ref="demoServiceImpl"/>
+
+
+    <bean id="demoServiceImpl" class="com.tonytaotao.rpc.demo.service.impl.DemoServiceImpl" />
+</beans>
